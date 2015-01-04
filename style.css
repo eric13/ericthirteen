@@ -4,7 +4,7 @@
  Author: the WordPress team
  Author URI: http://wordpress.org/
  Description: In 2014, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
- Version: 1.3
+ Version: 1.1
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
@@ -116,8 +116,37 @@ body {
 }
 
 a {
-	color: #24890d;
 	text-decoration: none;
+}
+
+a,
+.content-sidebar .widget a,
+.primary-navigation li.focus > a {
+	color: #1f85f4;
+}
+
+::selection, ::-moz-selection,.hentry .mejs-controls .mejs-time-rail .mejs-time-current {
+	background: #1f85f4;
+}
+
+input[type="submit"],
+.search-toggle,
+.widget input[type="submit"],
+.widget_calendar tbody a,
+.content-sidebar .widget input[type="submit"],
+.slider-control-paging .slider-active:before,
+.slider-control-paging .slider-active:hover:before,
+.slider-direction-nav a:hover,
+.primary-navigation ul ul,
+.secondary-navigation ul ul,
+.secondary-navigation li.focus > a,
+.search-box,
+.search-toggle {
+	background-color: #1f85f4;
+}
+
+.paging-navigation .page-numbers.current {
+	border-top: 5px solid #1f85f4;
 }
 
 a:focus {
@@ -130,8 +159,79 @@ a:active {
 }
 
 a:active,
-a:hover {
-	color: #41a62a;
+a:hover,
+.site-navigation a:hover,
+.entry-title a:hover,
+.entry-meta a:hover,
+.cat-links a:hover,
+.entry-content .edit-link a:hover,
+.post-navigation a:hover,
+.image-navigation a:hover,
+.comment-author a:hover,
+.comment-list .pingback a:hover,
+.comment-list .trackback a:hover,
+.comment-metadata a:hover,
+.comment-reply-title small a:hover,
+.widget a:hover,
+.widget-title a:hover,
+.widget_twentyfourteen_ephemera .entry-meta a:hover,
+.content-sidebar .widget a:hover,
+.content-sidebar .widget .widget-title a:hover,
+.content-sidebar .widget_twentyfourteen_ephemera .entry-meta a:hover,
+.featured-content a:hover,
+.site-info a:hover {
+	color: #666;
+}
+
+.page-links a:hover {
+	background: #666;
+	border: 1px solid #666;
+	color: #fff;
+}
+
+.paging-navigation a:hover {
+	border-top: 5px solid #666;
+	color: #2b2b2b;
+}
+
+button:hover,
+button:focus,
+.button:hover,
+.button:focus,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+.search-toggle:hover,
+.search-toggle.active,
+.search-box,
+.entry-meta .tag-links a:hover,
+.widget input[type="button"]:hover,
+.widget input[type="button"]:focus,
+.widget input[type="reset"]:hover,
+.widget input[type="reset"]:focus,
+.widget input[type="submit"]:hover,
+.widget input[type="submit"]:focus,
+.widget_calendar tbody a:hover,
+.content-sidebar .widget input[type="button"]:hover,
+.content-sidebar .widget input[type="button"]:focus,
+.content-sidebar .widget input[type="reset"]:hover,
+.content-sidebar .widget input[type="reset"]:focus,
+.content-sidebar .widget input[type="submit"]:hover,
+.content-sidebar .widget input[type="submit"]:focus,
+.slider-control-paging a:hover:before,
+.primary-navigation ul ul a:hover,
+.primary-navigation ul ul li.focus > a,
+.secondary-navigation ul ul a:hover,
+.secondary-navigation ul ul li.focus > a {
+	background-color: #666;
+}
+
+
+.entry-meta .tag-links a:hover:before {
+	border-right-color: #666;
 }
 
 h1,
@@ -459,16 +559,15 @@ hr {
 }
 
 /* Support a widely-adopted but non-standard selector for text selection styles
- * to achieve a better experience. See https://core.trac.wordpress.org/ticket/25898.
+ * to achieve a better experience. See http://core.trac.wordpress.org/ticket/25898.
  */
 ::selection {
-	background: #24890d;
-	color: #fff;
+	background: #DDD;
+	color: #111;
 	text-shadow: none;
 }
 
 ::-moz-selection {
-	background: #24890d;
 	color: #fff;
 	text-shadow: none;
 }
@@ -506,7 +605,6 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	background-color: #24890d;
 	border: 0;
 	border-radius: 2px;
 	color: #fff;
@@ -527,7 +625,6 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background-color: #41a62a;
 	color: #fff;
 }
 
@@ -819,7 +916,6 @@ span + .edit-link:before,
 
 .site {
 	background-color: #fff;
-	max-width: 1260px;
 	position: relative;
 }
 
@@ -846,7 +942,6 @@ span + .edit-link:before,
 
 .site-header {
 	background-color: #000;
-	max-width: 1260px;
 	position: relative;
 	width: 100%;
 	z-index: 4;
@@ -863,36 +958,24 @@ span + .edit-link:before,
 	font-weight: 700;
 	line-height: 48px;
 	margin: 0;
-
-	/* Nav-toggle width + search-toggle width - gutter = 86px */
-	max-width: -webkit-calc(100% - 86px);
-	max-width:         calc(100% - 86px);
+	font-weight: 100;
+	text-transform: uppercase;
 }
 
 .site-title a,
 .site-title a:hover {
 	color: #fff;
-	display: block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
 
 /* Search in the header */
 
 .search-toggle {
-	background-color: #24890d;
 	cursor: pointer;
 	float: right;
 	height: 48px;
 	margin-right: 38px;
 	text-align: center;
 	width: 48px;
-}
-
-.search-toggle:hover,
-.search-toggle.active {
-	background-color: #41a62a;
 }
 
 .search-toggle:before {
@@ -918,8 +1001,10 @@ span + .edit-link:before,
 }
 
 .search-box {
-	background-color: #41a62a;
-	padding: 12px;
+	padding: 18px;
+	width: min-intrinsic;
+	position:absolute;
+	right: 0;
 }
 
 .search-box .search-field {
@@ -929,6 +1014,7 @@ span + .edit-link:before,
 	font-size: 16px;
 	padding: 2px 2px 3px 6px;
 	width: 100%;
+	height: 32px;
 }
 
 
@@ -954,10 +1040,6 @@ span + .edit-link:before,
 	color: #fff;
 	display: block;
 	text-transform: uppercase;
-}
-
-.site-navigation a:hover {
-	color: #41a62a;
 }
 
 .site-navigation .current_page_item > a,
@@ -1011,6 +1093,7 @@ span + .edit-link:before,
 	background-color: #000;
 	border-radius: 0;
 	cursor: pointer;
+	font-size: 0;
 	height: 48px;
 	margin: 0;
 	overflow: hidden;
@@ -1025,7 +1108,8 @@ span + .edit-link:before,
 .menu-toggle:before {
 	color: #fff;
 	content: "\f419";
-	padding: 16px;
+	display: inline;
+	margin-top: 16px;
 }
 
 .menu-toggle:active,
@@ -1059,7 +1143,7 @@ span + .edit-link:before,
 .site-content .entry-meta,
 .page-content {
 	margin: 0 auto;
-	max-width: 474px;
+	max-width: 520px;
 }
 
 .page-content {
@@ -1113,10 +1197,6 @@ a.post-thumbnail:hover {
 	color: #2b2b2b;
 }
 
-.entry-title a:hover {
-	color: #41a62a;
-}
-
 .site-content .entry-header {
 	background-color: #fff;
 	padding: 0 10px 12px;
@@ -1145,25 +1225,20 @@ a.post-thumbnail:hover {
 	color: #767676;
 }
 
-.entry-meta a:hover {
-	color: #41a62a;
-}
-
 .sticky .entry-date {
 	display: none;
 }
 
+/* Don't use cat-links */
+
 .cat-links {
+	display: none;
 	font-weight: 900;
 	text-transform: uppercase;
 }
 
 .cat-links a {
 	color: #2b2b2b;
-}
-
-.cat-links a:hover {
-	color: #41a62a;
 }
 
 .byline {
@@ -1202,7 +1277,6 @@ a.post-thumbnail:hover {
 }
 
 .entry-meta .tag-links a:hover {
-	background-color: #41a62a;
 	color: #fff;
 }
 
@@ -1216,10 +1290,6 @@ a.post-thumbnail:hover {
 	top: 0;
 	left: -8px;
 	width: 0;
-}
-
-.entry-meta .tag-links a:hover:before {
-	border-right-color: #41a62a;
 }
 
 .entry-meta .tag-links a:after {
@@ -1332,14 +1402,6 @@ a.post-thumbnail:hover {
 	text-decoration: none;
 }
 
-.entry-content .edit-link a:hover {
-	color: #41a62a;
-}
-
-.entry-content .more-link {
-	white-space: nowrap;
-}
-
 /* Mediaelements */
 
 .hentry .mejs-container {
@@ -1354,10 +1416,6 @@ a.post-thumbnail:hover {
 .hentry .mejs-controls .mejs-time-rail .mejs-time-loaded,
 .hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
 	background: #fff;
-}
-
-.hentry .mejs-controls .mejs-time-rail .mejs-time-current {
-	background: #24890d;
 }
 
 .hentry .mejs-controls .mejs-time-rail .mejs-time-total,
@@ -1377,83 +1435,6 @@ a.post-thumbnail:hover {
 
 .hentry .mejs-overlay-loading {
 	background: transparent;
-}
-
-.hentry .mejs-overlay-button {
-	background-color: #fff;
-	background-image: none;
-	border-radius: 2px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.8);
-	color: #000;
-	height: 36px;
-	margin-left: -24px;
-	width: 48px;
-}
-
-.hentry .mejs-overlay-button:before {
-	-webkit-font-smoothing: antialiased;
-	content: '\f452';
-	display: inline-block;
-	font: normal 32px/1.125 Genericons;
-	position: absolute;
-	top: 1px;
-	left: 10px;
-}
-
-.hentry .mejs-controls .mejs-button button:focus {
-	outline: none;
-}
-
-.hentry .mejs-controls .mejs-button button {
-	-webkit-font-smoothing: antialiased;
-	background: none;
-	color: #fff;
-	display: inline-block;
-	font: normal 16px/1 Genericons;
-}
-
-.hentry .mejs-playpause-button.mejs-play button:before {
-	content: '\f452';
-}
-
-.hentry .mejs-playpause-button.mejs-pause button:before {
-	content: '\f448';
-}
-
-.hentry .mejs-volume-button.mejs-mute button:before {
-	content: '\f109';
-	font-size: 20px;
-	position: absolute;
-	top: -2px;
-	left: 0;
-}
-
-.hentry .mejs-volume-button.mejs-unmute button:before {
-	content: '\f109';
-	left: 0;
-	position: absolute;
-	top: 0;
-}
-
-.hentry .mejs-fullscreen-button button:before {
-	content: '\f474';
-}
-
-.hentry .mejs-fullscreen-button.mejs-unfullscreen button:before {
-	content: '\f406';
-}
-
-.hentry .mejs-overlay:hover .mejs-overlay-button {
-	background-color: #24890d;
-	color: #fff;
-}
-
-.hentry .mejs-controls .mejs-button button:hover {
-	color: #41a62a;
-}
-
-.content-sidebar .wp-playlist-item .wp-playlist-caption {
-	color: #000;
 }
 
 /* Page links */
@@ -1486,8 +1467,6 @@ a.post-thumbnail:hover {
 }
 
 .page-links a:hover {
-	background: #41a62a;
-	border: 1px solid #41a62a;
 	color: #fff;
 }
 
@@ -1695,11 +1674,6 @@ a.post-thumbnail:hover {
 	text-transform: none;
 }
 
-.post-navigation a:hover,
-.image-navigation a:hover {
-	color: #41a62a;
-}
-
 /* Paging Navigation */
 
 .paging-navigation {
@@ -1726,12 +1700,7 @@ a.post-thumbnail:hover {
 	color: #2b2b2b;
 }
 
-.paging-navigation .page-numbers.current {
-	border-top: 5px solid #24890d;
-}
-
 .paging-navigation a:hover {
-	border-top: 5px solid #41a62a;
 	color: #2b2b2b;
 }
 
@@ -1949,13 +1918,6 @@ a.post-thumbnail:hover {
 	color: #767676;
 }
 
-.comment-author a:hover,
-.comment-list .pingback a:hover,
-.comment-list .trackback a:hover,
-.comment-metadata a:hover {
-	color: #41a62a;
-}
-
 .comment-list article,
 .comment-list .pingback,
 .comment-list .trackback {
@@ -2110,10 +2072,6 @@ a.post-thumbnail:hover {
 	width: 24px;
 }
 
-.comment-reply-title small a:hover {
-	color: #41a62a;
-}
-
 .comment-reply-title small a:before {
 	content: "\f405";
 	font-size: 32px;
@@ -2211,10 +2169,6 @@ a.post-thumbnail:hover {
 
 .widget a {
 	color: #fff;
-}
-
-.widget a:hover {
-	color: #41a62a;
 }
 
 .widget h1,
@@ -2335,8 +2289,8 @@ a.post-thumbnail:hover {
 	margin-bottom: 18px;
 }
 
-.widget-area .widget input,
-.widget-area .widget textarea {
+.widget input,
+.widget textarea {
 	background-color: rgba(255, 255, 255, 0.1);
 	border-color: rgba(255, 255, 255, 0.2);
 	color: #fff;
@@ -2344,8 +2298,8 @@ a.post-thumbnail:hover {
 	padding: 1px 2px 2px 4px;
 }
 
-.widget-area .widget input:focus,
-.widget-area .widget textarea:focus {
+.widget input:focus,
+.widget textarea:focus {
 	border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -2354,19 +2308,9 @@ a.post-thumbnail:hover {
 .widget input[type="button"],
 .widget input[type="reset"],
 .widget input[type="submit"] {
-	background-color: #24890d;
 	border: 0;
 	font-size: 12px;
 	padding: 5px 15px 4px;
-}
-
-.widget input[type="button"]:hover,
-.widget input[type="button"]:focus,
-.widget input[type="reset"]:hover,
-.widget input[type="reset"]:focus,
-.widget input[type="submit"]:hover,
-.widget input[type="submit"]:focus {
-	background-color: #41a62a;
 }
 
 .widget input[type="button"]:active,
@@ -2391,10 +2335,6 @@ a.post-thumbnail:hover {
 .widget-title,
 .widget-title a {
 	color: #fff;
-}
-
-.widget-title a:hover {
-	color: #41a62a;
 }
 
 /* Calendar Widget*/
@@ -2423,13 +2363,8 @@ a.post-thumbnail:hover {
 }
 
 .widget_calendar tbody a {
-	background-color: #24890d;
 	color: #fff;
 	display: block;
-}
-
-.widget_calendar tbody a:hover {
-	background-color: #41a62a;
 }
 
 .widget_calendar tbody a:hover {
@@ -2478,10 +2413,6 @@ a.post-thumbnail:hover {
 
 .widget_twentyfourteen_ephemera .entry-meta a {
 	color: rgba(255, 255, 255, 0.7);
-}
-
-.widget_twentyfourteen_ephemera .entry-meta a:hover {
-	color: #41a62a;
 }
 
 .widget_twentyfourteen_ephemera .entry-content ul,
@@ -2590,14 +2521,6 @@ a.post-thumbnail:hover {
  * -----------------------------------------------------------------------------
  */
 
-.content-sidebar .widget a {
-	color: #24890d;
-}
-
-.content-sidebar .widget a:hover {
-	color: #41a62a;
-}
-
 .content-sidebar .widget pre {
 	border-color: rgba(0, 0, 0, 0.1);
 }
@@ -2657,18 +2580,8 @@ a.post-thumbnail:hover {
 .content-sidebar .widget input[type="button"],
 .content-sidebar .widget input[type="reset"],
 .content-sidebar .widget input[type="submit"] {
-	background-color: #24890d;
 	border: 0;
 	color: #fff;
-}
-
-.content-sidebar .widget input[type="button"]:hover,
-.content-sidebar .widget input[type="button"]:focus,
-.content-sidebar .widget input[type="reset"]:hover,
-.content-sidebar .widget input[type="reset"]:focus,
-.content-sidebar .widget input[type="submit"]:hover,
-.content-sidebar .widget input[type="submit"]:focus {
-	background-color: #41a62a;
 }
 
 .content-sidebar .widget input[type="button"]:active,
@@ -2693,10 +2606,6 @@ a.post-thumbnail:hover {
 
 .content-sidebar .widget .widget-title a {
 	color: #2b2b2b;
-}
-
-.content-sidebar .widget .widget-title a:hover {
-	color: #41a62a;
 }
 
 /* List Style Widgets*/
@@ -2788,10 +2697,6 @@ a.post-thumbnail:hover {
 	color: #767676;
 }
 
-.content-sidebar .widget_twentyfourteen_ephemera .entry-meta a:hover {
-	color: #41a62a;
-}
-
 .content-sidebar.widget_twentyfourteen_ephemera blockquote cite {
 	font-size: 13px;
 	line-height: 1.3846153846;
@@ -2834,10 +2739,6 @@ a.post-thumbnail:hover {
 
 #supplementary + .site-info {
 	border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.site-info a:hover {
-	color: #41a62a;
 }
 
 
@@ -2896,10 +2797,6 @@ a.post-thumbnail:hover {
 
 .featured-content a {
 	color: #fff;
-}
-
-.featured-content a:hover {
-	color: #41a62a;
 }
 
 .featured-content .entry-meta {
@@ -2976,15 +2873,6 @@ a.post-thumbnail:hover {
 	width: 12px;
 }
 
-.slider-control-paging a:hover:before {
-	background-color: #41a62a;
-}
-
-.slider-control-paging .slider-active:before,
-.slider-control-paging .slider-active:hover:before {
-	background-color: #24890d;
-}
-
 .slider-direction-nav {
 	clear: both;
 	list-style: none;
@@ -3015,10 +2903,6 @@ a.post-thumbnail:hover {
 	display: block;
 	font-size: 0;
 	height: 46px;
-}
-
-.slider-direction-nav a:hover {
-	background-color: #24890d;
 }
 
 .slider-direction-nav a:before {
@@ -3077,7 +2961,7 @@ a.post-thumbnail:hover {
 /* Does the same thing as <meta name="viewport" content="width=device-width">,
  * but in the future W3C standard way. -ms- prefix is required for IE10+ to
  * render responsive styling in Windows 8 "snapped" views; IE10+ does not honor
- * the meta tag. See https://core.trac.wordpress.org/ticket/25888.
+ * the meta tag. See http://core.trac.wordpress.org/ticket/25888.
  */
 @-ms-viewport {
 	width: device-width;
@@ -3348,7 +3232,8 @@ a.post-thumbnail:hover {
 	}
 
 	.full-width .site-content .has-post-thumbnail .entry-header,
-	.full-width .site-content .hentry.has-post-thumbnail:first-child {
+	.full-width.singular .site-content .hentry.has-post-thumbnail,
+	.full-width.home .site-content .hentry.has-post-thumbnail {
 		margin-top: -48px;
 	}
 
@@ -3435,12 +3320,6 @@ a.post-thumbnail:hover {
 }
 
 @media screen and (min-width: 783px) {
-	.site-title {
-		/* Search-toggle width = 48px */
-		max-width: -webkit-calc(100% - 48px);
-		max-width:         calc(100% - 48px);
-	}
-
 	.header-main {
 		padding-right: 0;
 	}
@@ -3514,7 +3393,6 @@ a.post-thumbnail:hover {
 	}
 
 	.primary-navigation ul ul {
-		background-color: #24890d;
 		float: left;
 		margin: 0;
 		position: absolute;
@@ -3543,13 +3421,7 @@ a.post-thumbnail:hover {
 
 	.primary-navigation li:hover > a,
 	.primary-navigation li.focus > a {
-		background-color: #24890d;
 		color: #fff;
-	}
-
-	.primary-navigation ul ul a:hover,
-	.primary-navigation ul ul li.focus > a {
-		background-color: #41a62a;
 	}
 
 	.primary-navigation ul li:hover > ul,
@@ -3681,7 +3553,8 @@ a.post-thumbnail:hover {
 		margin-left: 20px;
 	}
 
-	.full-width .site-content .hentry.has-post-thumbnail:first-child {
+	.full-width.singular .site-content .hentry.has-post-thumbnail,
+	.full-width.home .site-content .hentry.has-post-thumbnail {
 		margin-top: -72px;
 	}
 
@@ -3699,11 +3572,6 @@ a.post-thumbnail:hover {
 		float: left;
 	}
 
-	.site-content {
-		margin-right: 29.04761904%;
-		margin-left: 182px;
-	}
-
 	.site-content .entry-header {
 		margin-top: 0;
 	}
@@ -3718,7 +3586,6 @@ a.post-thumbnail:hover {
 	}
 
 	.site:before {
-		background-color: #000;
 		content: "";
 		display: block;
 		height: 100%;
@@ -3746,7 +3613,7 @@ a.post-thumbnail:hover {
 
 	.site-description {
 		display: block;
-		margin: 0 0 18px;
+		margin: -3px 0 21px;
 	}
 
 	.site-description:empty {
@@ -3769,7 +3636,6 @@ a.post-thumbnail:hover {
 	}
 
 	.secondary-navigation ul ul {
-		background-color: #24890d;
 		position: absolute;
 		top: 0;
 		left: -999em;
@@ -3783,13 +3649,7 @@ a.post-thumbnail:hover {
 
 	.secondary-navigation li:hover > a,
 	.secondary-navigation li.focus > a {
-		background-color: #24890d;
 		color: #fff;
-	}
-
-	.secondary-navigation ul ul a:hover,
-	.secondary-navigation ul ul li.focus > a {
-		background-color: #41a62a;
 	}
 
 	.secondary-navigation ul li:hover > ul,
@@ -4048,20 +3908,6 @@ a.post-thumbnail:hover {
 		width: 324px;
 	}
 
-	.site-content,
-	.site-main .widecolumn {
-		margin-left: 222px;
-	}
-
-	.site:before {
-		width: 222px;
-	}
-
-	.search-box-wrapper,
-	.featured-content {
-		padding-left: 222px;
-	}
-
 	#secondary {
 		width: 162px;
 	}
@@ -4318,4 +4164,5 @@ a.post-thumbnail:hover {
 		font-size: 25pt;
 		line-height: 36px;
 	}
+	
 }
