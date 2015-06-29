@@ -68,7 +68,7 @@
 
 <div id="header-desc">
 Producer, Director, Editor.<br />
-Co-host of <a href="http://doublefeatureshow.com" target="_blank">Double Feature</a>.
+Co-host of <a href="https://doublefeature.fm" target="_blank">Double Feature</a>.
 </div>
 
 <img src="../images/eric-thirteen.jpg" alt="Eric Thirteen" />
